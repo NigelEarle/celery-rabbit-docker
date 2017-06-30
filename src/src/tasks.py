@@ -21,7 +21,7 @@ def update_job(n):
       job.save()
     except:
       job.result = None
-      job.status = 'failed'
+      job.status = "failed"
       job.save()
 
   return wrapper
