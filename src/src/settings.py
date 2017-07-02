@@ -52,8 +52,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE_CLASSES = ()
-
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny'),
     'PAGINATE_BY': 10
@@ -89,7 +87,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_ENV_DB', 'celery_rabbit_docker'),
         'USER': os.environ.get('DB_ENV_POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('DB_ENV_POSTGRES_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('DB_PORT_5432_TCP_ADDR', 'db'),
+        'HOST': os.environ.get('DB_PORT_5432_TCP_ADDR', 'localhost'),
         'PORT': os.environ.get('DB_PORT_5432_TCP_PORT', ''),
 
     }
