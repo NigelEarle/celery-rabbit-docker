@@ -24,8 +24,8 @@ services:
       - RABBITMQ_DEFAULT_USER=nigel
       - RABBITMQ_DEFAULT_PASS=nigel
     ports:
-      - "5672": "5672" # forward port because not useful for debugging
-      - "15672": "15672" # here, we can access rabbitmq management plugin
+      - "5672": "5672"
+      - "15672": "15672"
 
   # Django web server
   web:
