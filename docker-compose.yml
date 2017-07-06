@@ -33,9 +33,9 @@ services:
       context: .
       dockerfile: Dockerfile
     hostname: web
-    command: ./run_web.sh
+    command: /bin/sh /app/run_web.sh
     volumes: 
-      - .:/app # mount current directory inside container
+      - $PWD:/app # mount current directory inside container
     ports:
       - "8000:8000"
     # set up links so that the web knows about db, rabbit and redis
@@ -51,9 +51,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: ./run_celery.sh
-    volumes:
-      - .:app
+    command: /bin/sh /app/run_celery.sh
     links:
       - db
       - rabbit
