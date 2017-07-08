@@ -6,7 +6,11 @@ ADD requirements.txt /app/requirements.txt
 
 ADD run_web.sh /app/run_web.sh
 
+ADD run_celery.sh /app/run_celery.sh
+
 RUN chmod +x /app/run_web.sh
+
+RUN chmod +x /app/run_celery.sh
 
 # set working directory
 WORKDIR /app/

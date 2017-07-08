@@ -26,7 +26,6 @@ SECRET_KEY = '(c%+=#tppoec4yvvbq1zksog3(c55odkv#=*(32aq5jku5c%g+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
@@ -65,6 +64,7 @@ TEMPLATES = [
         'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
+            'debug': DEBUG,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'src.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_ENV_DB', 'postgres'),
+        'NAME': os.environ.get('DB_ENV_DB', 'celery_rabbit_docker'),
         'USER': os.environ.get('DB_ENV_POSTGRES_USER', 'postgres'),
         'PASSWORD': os.environ.get('DB_ENV_POSTGRES_PASSWORD', 'postgres'),
         'HOST': os.environ.get('DB_PORT_5432_TCP_ADDR', 'db'),
@@ -124,7 +124,7 @@ BROKER_CONNECTION_TIMEOUT = 10
 # Celery Config
 CELERY_DEFAULT_QUEUE = 'default'
 CELERY_QUEUES = (
-    Queue('default', Exchange('default'), routing_key='default')
+    Queue('default', Exchange('default'), routing_key='default',),
 )
 
 # Sensible settings for celery

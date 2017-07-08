@@ -3,8 +3,6 @@
 # wait for PSQL server to start
 sleep 10
 
-cd celery-rabbit-docker
-
 # init migration
 su -m myuser -c "python src/manage.py makemigrations"
 

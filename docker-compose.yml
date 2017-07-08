@@ -6,8 +6,8 @@ services:
     image: postgres:9.4
     hostname: db
     environment:
-      - POSTGRES_USER=nwre87
-      - POSTGRES_PASSWORD=''
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=celery_rabbit_docker
     ports:
       - "5432:5432"
@@ -52,6 +52,8 @@ services:
       context: .
       dockerfile: Dockerfile
     command: /bin/sh /app/run_celery.sh
+    volumes:
+      - $PWD:/app
     links:
       - db
       - rabbit
